@@ -7,3 +7,7 @@
 (deftest paper-order
   (is (= (day02/paper-order example)
          101)))
+
+(deftest ribbon-order
+  (is (= (day02/ribbon-order example)
+         48)))

@@ -28,6 +28,10 @@
        (map paper-needed)
        (apply +)))
 
+(defn ribbon-order [boxes]
+  0)
+
 (defn -main []
   (let [boxes (read-input)]
-    (println "Part 1:" (paper-order boxes))))
+    (println "Part 1:" (paper-order boxes))
+    (println "Part 2:" (ribbon-order boxes))))
