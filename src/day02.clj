@@ -11,8 +11,22 @@
 (defn read-input []
   (parse-input (slurp "inputs/day02.txt")))
 
+(defn face-areas [[l w h]]
+  [(* l w)
+   (* w h)
+   (* l h)])
+
+(defn paper-needed [box]
+  (let [[a b c] (face-areas box)]
+    (+ (* 2 a)
+       (* 2 b)
+       (* 2 c)
+       (min a b c))))
+
 (defn paper-order [boxes]
-  (throw (RuntimeException. "Not yet implemented")))
+  (->> boxes
+       (map paper-needed)
+       (apply +)))
 
 (defn -main []
   (let [boxes (read-input)]
