@@ -28,8 +28,27 @@
        (map paper-needed)
        (apply +)))
 
+(defn all-perimeters [[l w h]]
+  [(+ (* 2 l) (* 2 w))
+   (+ (* 2 w) (* 2 h))
+   (+ (* 2 h) (* 2 l))])
+
+(defn smallest-perimeter [box]
+  (->> box
+       all-perimeters
+       (apply min)))
+
+(defn ribbon-for-bow [[l w h]]
+  (* l w h))
+
+(defn ribbon-needed [box]
+  (+ (smallest-perimeter box)
+     (ribbon-for-bow box)))
+
 (defn ribbon-order [boxes]
-  0)
+  (->> boxes
+       (map ribbon-needed)
+       (apply +)))
 
 (defn -main []
   (let [boxes (read-input)]
